@@ -1,11 +1,25 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const AddItem = () => (
-    <div>
-      <p>
-        form goes here
-      </p>
-    </div>
-  );
+class AddItem extends Component {
+
+  state = {
+    newItem: {
+      description: '',
+      url: ''
+    }
+  }
   
-  export default AddItem;
+  render() {
+    return (
+      <div>
+        <p>
+          <input type="text" placeholder="item description"></input>
+          <input type="text" placeholder="item url"></input>
+          <button>add to the shelf</button>
+        </p>
+      </div>
+
+    )
+  }
+}
+export default AddItem;
