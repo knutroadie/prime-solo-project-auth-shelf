@@ -20,19 +20,28 @@ router.get('/', (req, res) => {
  * Add an item for the logged in user to the shelf
  */
 router.post('/', (req, res) => {
-    let queryText = `
-                    INSERT INTO "item" ("description", "image_url")
-                    VALUES ('$1', '$2')     
-    `
+    // let queryText = `
+    //                 INSERT INTO "item" ("description", "image_url", "user_id")
+    //                 VALUES ('$1', '$2', $3);     
+    //                 `
+
+    //let queryText = `SELECT * from "item";`;    
+    let queryText = `INSERT INTO "item" ("description", "image_url", "user_id")
+                    VALUES ($1, $2, $3);`;
+
+
     console.log('req.body.description:', req.body.description);
     console.log('req.body.url:', req.body.url);
     console.log('req.user.id:', req.user.id);
-    pool.query(queryText, [req.body.description, req.body.url])
+    //pool.query(queryText, [req.body.description, req.body.url, req.user.id])
+    pool.query(queryText, [req.body.description, req.body.url, req.user.id])
         .then((response) => {
+            console.log('in .then')
             res.sendStatus(200)
         }).catch((error) => {
+            console.log('caught error:', error)
             res.sendStatus(500)
-        })
+    })
 });
 
 
