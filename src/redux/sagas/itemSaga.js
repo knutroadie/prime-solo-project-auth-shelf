@@ -4,6 +4,7 @@ import axios from 'axios';
 function* itemSaga() {
     yield takeEvery('GET_ITEMS', getItems);
     yield takeEvery('ADD_NEW_ITEM', addNewItem);
+    yield takeEvery('DELETE_ITEMS', deleteItem);
 }
 
 function* getItems() {
@@ -14,6 +15,14 @@ function* getItems() {
 function* addNewItem(action) {
     yield axios.post('/api/shelf', action.payload);
     put({type: 'GET_ITEMS'});
+}
+
+function* deleteItem(action) {
+    console.log('action.payload delete item', action.payload);
+    let id = action.payload.id;
+    yield axios.delete(`/api/shelf/${id}`, action.payload);
+
+    //put({type: 'DELETE_ITEMS'});
 }
 
 export default itemSaga;
