@@ -53,7 +53,9 @@ To use Postman with this repo, you will need to set up requests in Postman to re
 Keep in mind that once you using the login route, Postman will manage your session cookie for you just like a browser, ensuring it is sent with each subsequent request. If you delete the `localhost` cookie in Postman, it will effectively log you out.
 
 1. Start the server - `npm run server`
+
 2. [Import the sample routes JSON file](./PostmanPrimeSoloRoutes.json) by clicking `Import` in Postman. Select the file.
+
 3. Click `Collections` and `Send` the following three calls in order:
     1. `POST /api/user/register` registers a new user, see body to change username/password
     2. `POST /api/user/login` will login a user, see body to change username/password
@@ -61,25 +63,58 @@ Keep in mind that once you using the login route, Postman will manage your sessi
 
 After running the login route above, you will be able to try any other route you create that requires a logged in user!
 
+
+
+
+
+
+
 ## FEATURES
 
-We recommend working in groups of 4 or 6 and pair programming for this project. Each pair should take on one of the following features. You will want to identify any tasks that need to be finished in a particular order as a group to avoid merge conflicts. Each of the following features should be on a separate route.
+We recommend working in groups of 4 or 6 and pair programming for this project. Each pair should take on one of the following features. 
+
+You will want to identify any tasks that need to be finished in a particular order as a group to avoid merge conflicts. Each of the following features should be on a separate route.
+
+
+
+
 
 ### Display all Items
 
 The shelf (info) page should show all of the items stored in the database in a list or table.
 
+
+
 ### Add Items to the Shelf
 
 The Shelf (Info) Page should allow a user to add a new item to the database (which should immediately appear in the list).
 
+
+
+
 > NOTE: Image url should be a full path to an existing image on the web. You should not attempt to implement image upload for this.
+
+
+
+
+
 
 ### Delete Items from the Shelf
 
 An authenticated user should be able to delete items from the shelf if they were the one who added the item to the shelf.
 
+
+
 > NOTE: This should require client and server changes. An unauthenticated attacker from Postman should not be able to delete anything.
+
+
+
+
+
+
+
+
+
 
 ## Stretch Goals
 
