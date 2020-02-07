@@ -21,8 +21,6 @@ function* deleteItem(action) {
     console.log('action.payload delete item', action.payload);
     let id = action.payload.id;
     yield axios.delete(`/api/shelf/${id}`, action.payload);
-
-    //put({type: 'DELETE_ITEMS'});
 }
 
 export default itemSaga;
