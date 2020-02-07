@@ -23,6 +23,7 @@ class InfoPage extends Component {
     console.log('trying to delete item:', this.props.reduxStore.itemsReducer.item.id);
     this.props.dispatch({
       type: 'DELETE_ITEM',
+      // THE NEXT LINE NEEDS TO BE CORRECTED
       url: `/api/shelf/{this.props.reduxStore.itemsReducer.item.id}`
     });
     this.getItems();
