@@ -6,9 +6,7 @@ const router = express.Router();
  * Get all of the items on the shelf
  */
 router.get('/', (req, res) => {
-    let queryText = `
-                    SELECT * FROM "item";                
-    `
+    let queryText = `SELECT * FROM "item";`
     pool.query(queryText)
         .then((response) => {
             res.send(response.rows)
@@ -17,11 +15,11 @@ router.get('/', (req, res) => {
         })
 });
 
-
 /**
  * Add an item for the logged in user to the shelf
  */
 router.post('/', (req, res) => {
+    console.log('in shelf router post', req.body, req.user);
     let queryText = `
                     INSERT INTO "item" ("description, "image_url", "user_id")
                     VALUES ($1, $2, $3)     

@@ -19,11 +19,12 @@ class InfoPage extends Component {
     })
   }
 
-  deleteItem = () => {
-    console.log('trying to delete item:', this.props.reduxStore.itemsReducer.item.id);
+  deleteItem = (event, id) => {
+    console.log('trying to delete item:', id);
     this.props.dispatch({
       type: 'DELETE_ITEM',
-      url: `/api/shelf/{this.props.reduxStore.itemsReducer.item.id}`
+      // THE NEXT LINE NEEDS TO BE CORRECTED
+      url: `/api/shelf/id`
     });
     this.getItems();
   }
@@ -39,7 +40,7 @@ class InfoPage extends Component {
           <div key={item.id}>
             <img alt={item.id} src={item.url} />
             <p>{item.description}</p>
-            <button onClick={this.deleteItem}>Delete?</button>
+            <button onClick={(event) => this.deleteItem(event, item.id)}>Delete?</button>
           </div>
         )}
       </div>
