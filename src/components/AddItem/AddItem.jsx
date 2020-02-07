@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 
 class AddItem extends Component {
 
@@ -44,4 +45,5 @@ class AddItem extends Component {
     )
   }
 }
-export default AddItem;
+
+export default connect()(AddItem);
