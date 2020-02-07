@@ -16,17 +16,18 @@ router.get('/', (req, res) => {
             res.sendStatus(500)
         })
 });
-
-
-/**
+/*
  * Add an item for the logged in user to the shelf
  */
 router.post('/', (req, res) => {
     let queryText = `
-                    INSERT INTO "item" ("description, "image_url", "user_id")
-                    VALUES ($1, $2, $3)     
+                    INSERT INTO "item" ("description", "image_url")
+                    VALUES ('$1', '$2')     
     `
-    pool.query(queryText, [req.body.description, req.body.url, req.user.id])
+    console.log('req.body.description:', req.body.description);
+    console.log('req.body.url:', req.body.url);
+    console.log('req.user.id:', req.user.id);
+    pool.query(queryText, [req.body.description, req.body.url])
         .then((response) => {
             res.sendStatus(200)
         }).catch((error) => {

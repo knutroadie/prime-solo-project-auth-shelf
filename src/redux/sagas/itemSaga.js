@@ -12,6 +12,8 @@ function* getItems() {
 }
 
 function* addNewItem(action) {
+    // console.log('in addNewItem', action.payload);
+    
     yield axios.post('/api/shelf', action.payload);
     put({type: 'GET_ITEMS'});
 }
